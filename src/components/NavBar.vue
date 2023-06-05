@@ -1,6 +1,5 @@
 <template>
-    <div>
-        
+    <div class="container  h-[50px]">
     </div>
 </template>
 
