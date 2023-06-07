@@ -12,12 +12,7 @@ export default {
         topRatedBlogs () {
             axios.get('http://127.0.0.1:8000/api/v1/blogs/top/rated')
                 .then((response)=>{
-                    this.top_blogs =response.data.blogs;
-                    for(let i=0; i<response.data.blogs.length;i++){
-                        this.top_blogs[i].image = 'http://127.0.0.1:8000/storage/blogImages/'+response.data.blogs[i].image;
-                        const date = new Date(this.top_blogs[i].created_at);
-                        this.top_blogs[i].created_at = date.toLocaleString();
-                    }
+                    this.top_blogs = this.getResponseData(response.data.blogs);
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -27,18 +22,25 @@ export default {
         recentBlogs(){
             axios.get('http://127.0.0.1:8000/api/v1/blogs/recent')
                 .then((response)=>{
-                    this.recent_blogs =response.data.blogs;
-                    for(let i=0; i<response.data.blogs.length;i++){
-                        this.recent_blogs[i].image = 'http://127.0.0.1:8000/storage/blogImages/'+response.data.blogs[i].image;
-                        const date = new Date(this.recent_blogs[i].created_at);
-                        this.recent_blogs[i].created_at = date.toLocaleString();
-
-                    }
+                    this.recent_blogs = this.getResponseData(response.data.blogs);
                 })
                 .catch((err)=>{
                     console.log(err);
                 })
-        }
+        },
+
+        gotoDetail(id){
+            this.$router.push({path:`/detail/${id}`});
+        },
+
+        getResponseData(blogs){
+            for(let i=0;i<blogs.length;i++){
+                blogs[i].image = 'http://127.0.0.1:8000/storage/blogImages/'+blogs[i].image;
+                const date = new Date(blogs[i].created_at);
+                blogs[i].created_at = date;
+            }
+            return blogs;
+        },
 
     },
     computed: {
@@ -87,7 +89,7 @@ export default {
                                 {{ item.content }}
                             </p>
                             <div class="card-actions items-center justify-between mt-3">
-                                <button class="btn btn-primary"><i class="fa-solid fa-eye"></i>Read</button>
+                                <button @click="gotoDetail(item.id)" class="btn btn-primary"><i class="fa-solid fa-eye"></i>Read</button>
                                 <div class="rating-container w-1/3 flex items-center justify-between">
                                     <i v-for="(rate,idx) in item.rating" :key="idx" class="fa-solid fa-star text-[#fcb603] text-xl"></i>
                                 </div>
@@ -117,7 +119,7 @@ export default {
                                 {{ item.content }}
                             </p>
                             <div class="card-actions items-center justify-between mt-3">
-                                <button class="btn btn-primary"><i class="fa-solid fa-eye"></i>Read</button>
+                                <button  @click="gotoDetail(item.id)" class="btn btn-primary"><i class="fa-solid fa-eye"></i>Read</button>
                                 <div class="rating">
                                     <input type="radio" name="rating-1" class="mask mask-star" />
                                     <input type="radio" name="rating-1" class="mask mask-star" />
