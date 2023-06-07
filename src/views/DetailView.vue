@@ -54,8 +54,8 @@
         data() {
             return {
                 blogID: null,
-                blogData: null,
-                rating: 0
+                blogData: {},
+                rating: 0,
             };
         },
         created () {
