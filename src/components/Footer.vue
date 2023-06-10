@@ -1,7 +1,7 @@
 <template>
     <footer class="footer footer-center p-10 bg-primary text-primary-content">
     <div>
-        <svg width="200" height="118" viewBox="0 0 200 118" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="" d="M100.002 0 68 55.304h64.006L100.002 0Zm-1 34.438 -26.348 16.816 26.348 -45.534v28.718Zm0 2.372v5.774l-16.736 10.72H73.16l25.842 -16.494Zm1.002 7.51 14.084 8.984h-28.114l14.03 -8.984Zm0.998 -1.736V36.81l25.844 16.494h-9.04l-16.804 -10.72Zm0 -8.146V5.72l26.348 45.534 -26.348 -16.816Z" fill="#000000"/></svg>
+
         <p class="font-bold">
         AungKyaw Phyo.
         </p> 

@@ -1,13 +1,20 @@
 <template>
     <div class="container flex flex-col gap-10 mx-auto mt-16 pt-5 pb-10">
-        <div class="row flex items-center justify-center">
-            <div class="join mt-4">
+        <div class="hidden sm:flex items-center justify-center">
+            <div class="join">
                 <input class="join-item btn btn-outline" type="radio" name="options" v-model="filterTag" value="all" @change="filterChange" aria-label="All" checked />
                 <input class="join-item btn btn-outline" type="radio" name="options" v-model="filterTag" value="computerScience" @change="filterChange" aria-label="Computer Science" />
                 <input class="join-item btn btn-outline" type="radio" name="options" v-model="filterTag" value="programming" @change="filterChange" aria-label="Programming" />
                 <input class="join-item btn btn-outline" type="radio" name="options" v-model="filterTag" value="knowledgeSharing" @change="filterChange" aria-label="Knowledge Sharing" />
                 <input class="join-item btn btn-outline" type="radio" name="options" v-model="filterTag" value="tipsAndOthers" @change="filterChange" aria-label="Tips & Others" />
             </div>
+        </div>
+
+        <div class="flex flex-col mt-16 items-center justify-center py-14" v-if="blogs.length==0">
+            <h1 class="text-3xl font-bold">Sorry</h1>
+            <span class="text-xl mt-5">
+                There are no blogs about this at the moment :(
+            </span>
         </div>
 
         <div class="row mt-5">

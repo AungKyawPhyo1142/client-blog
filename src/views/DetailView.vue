@@ -19,7 +19,7 @@
                     <router-link class="btn btn-secondary" to="/"><i class="fa-solid fa-circle-chevron-left"></i>Back</router-link>
                 </div>
 
-                <div class="">
+                <!-- <div class="">
                     <label for="my_modal_7" class="btn btn-primary"> <i class="fa-solid fa-star"></i> Rate this</label>
                     <input type="checkbox" id="my_modal_7" class="modal-toggle" />
                     <div class="modal backdrop-filter backdrop-blur-sm bg-opacity-30">
@@ -36,7 +36,7 @@
                         </div>
                     <label class="modal-backdrop" for="my_modal_7"></label>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -55,7 +55,6 @@
             return {
                 blogID: null,
                 blogData: {},
-                rating: 0,
             };
         },
         created () {
@@ -80,9 +79,6 @@
                 blog.created_at = `${formattedDate} | ${formattedTime}`;
                 return blog;
             },
-            handleRatingChange(){
-                console.log(this.rating);
-            }
         },
         computed: {
             formattedContent() {
